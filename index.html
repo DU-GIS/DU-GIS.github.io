@@ -26,18 +26,7 @@
         success: function(geojson) {
           var map = L.mapbox.map('map', 'mlayman09.map-81g3oy1j')
             .setView([39.67830463261529, -104.96197276865132], 15)
-            .markerLayer.setGeoJSON(geojson);
-			geojsonLayer = new L.GeoJson(geojson, {
-				onEachFeature: function (feature, layer) {
-					var popupContent = '';
-					if (feature.properties && feature.properties.popupContent)
-						popupContent += feature.properties.popupContent;
-					}
-					pop = layer.bindPopup(popupContent);
-				}
-			}).addTo(map);
-			pop.openPopup();
-			
+            .markerLayer.setGeoJSON(geojson);			
         }
       });
     }
