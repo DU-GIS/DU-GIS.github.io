@@ -20,8 +20,7 @@
 
 <div id='map'></div>
 <script>
-var map = L.mapbox.map('map', 'examples.map-9ijuk24y')
-    .setView([39.67830463261529, -104.96197276865132], 15);
+
 
 $.getJSON($('link[rel="points"]').attr("href"), function(data) {
 		var geojson = L.geoJson(data, {
@@ -29,6 +28,8 @@ $.getJSON($('link[rel="points"]').attr("href"), function(data) {
 				layer.bindPopup(feature.properties.name);
 			}
 		});
+		var map = L.mapbox.map('map', 'examples.map-9ijuk24y')
+		.setView([39.67830463261529, -104.96197276865132], 15);
 		geojson.addTo(map);
 	});
 
