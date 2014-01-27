@@ -31,6 +31,15 @@
       });
     }
   $(load);
+  
+  var myStyle = {
+	"color": "#ff7800",
+	};
+  
+  L.geoJson(geojson, {
+	style: myStyle
+	}).addTo(map);
+  
   </script>
 </body>
 </html>
