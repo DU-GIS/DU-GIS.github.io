@@ -29,6 +29,12 @@
             .setView([39.67830463261529, -104.96197276865132], 15)
             .markerLayer.setGeoJSON(geojson);
         }
+		var myStyle = {
+			"color: "#ff7800"
+			};
+		L.geoJson(geojson, {
+			style: myStyle
+			};.addto(map);
       });
     }
 
