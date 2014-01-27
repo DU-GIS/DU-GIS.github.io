@@ -28,13 +28,14 @@
           var map = L.mapbox.map('map', 'mlayman09.map-81g3oy1j')
             .setView([39.67830463261529, -104.96197276865132], 15)
             .markerLayer.setGeoJSON(geojson);
-        }
 		var myStyle = {
 			"color: "#ff7800"
 			};
 		L.geoJson(geojson, {
 			style: myStyle
 			};.addTo(map);
+        }
+		
       });
     }
 
