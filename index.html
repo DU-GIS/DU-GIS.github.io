@@ -5,10 +5,8 @@
 <title>GeoJSON Marker from URL</title>
 
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
-<script src='https://api.tiles.mapbox.com/mapbox.js/v0.6.7/mapbox.js'></script>
-<link href='https://api.tiles.mapbox.com/mapbox.js/v0.6.7/mapbox.css' rel='stylesheet' />
-<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-<link rel="points" type="application/json" href="https://raw.github.com/DU-GIS/DU-GIS.github.io/master/Restaurants.geojson">
+<script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />
 
 <style>
   body { margin:0; padding:0; }
@@ -16,18 +14,22 @@
 </style>
 </head>
 <body>
+
+
 <div id='map'></div>
 <script>
 var map = L.mapbox.map('map', 'examples.map-9ijuk24y')
-    .setView([39.67774313011706, -104.96188693796284], 15);
+    .setView([39.67830463261529, -104.96197276865132], 15);
 
 // As with any other AJAX request, this technique is subject to the Same Origin Policy:
 // http://en.wikipedia.org/wiki/Same_origin_policy
 // So the CSV file must be on the same domain as the Javascript, or the server
 // delivering it should support CORS.
 var markerLayer = L.mapbox.markerLayer()
-    .loadURL('https://raw.github.com/DU-GIS/DU-GIS.github.io/master/Restaurants.geojson')
+    .loadURL('/mapbox.js/assets/example-single.geojson')
     .addTo(map);
 </script>
+
+
 </body>
 </html>
