@@ -23,12 +23,12 @@
 
 
 $.getJSON($('link[rel="points"]').attr("href"), function(data) {
-		var geojson = L.geoJson(data, {
+		var geojson = L.mapbox.geoJson(data, {
 			onEachFeature: function (feature, layer) {
 				layer.bindPopup(feature.properties.name);
 			}
 		});
-		var map = L.mapbox.map('map', 'examples.map-9ijuk24y')
+		var map = L.mapbox.map('map', 'mlayman09.map-tkhmz43c')
 		.setView([39.67830463261529, -104.96197276865132], 15);
 		geojson.addTo(map);
 	});
