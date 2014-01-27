@@ -1,33 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset=utf-8 />
-<title>GeoJSON Marker from URL</title>
-
-<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
-<script src='https://github.com/DU-GIS/DU-GIS.github.io/blob/master/mapbox_js.js'></script>
-<link href='https://github.com/DU-GIS/DU-GIS.github.io/blob/master/mapbox_css.css'rel='stylesheet'/>
-
-
-<style>
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta charset=utf-8 />  
+<link href='//api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />  
+<script src='//api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js'></script>  
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>  
+<title></title>  
+<style>  
   body { margin:0; padding:0; }
   #map { position:absolute; top:0; bottom:0; width:100%; }
-</style>
-</head>
-<body>
+</style>  
+</head>  
+<body>  
+  <div id='map'></div>
+  <script>
+    var url = 'https://api.github.com/repos/du-gis/du-gis.github.io/contents/Restaurants.geojson';
 
+    function load() {
+      $.ajax({
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/vnd.github.v3.raw'
+        },
+        dataType: 'json',
+        url: url,
+        success: function(geojson) {
+          var map = L.mapbox.map('map', 'mlayman09.map-81g3oy1j')
+            .setView([39.67830463261529, -104.96197276865132], 15)
+            .markerLayer.setGeoJSON(geojson);
+        }
+      });
+    }
 
-<div id='map'></div>
-<script>
-
-var map = L.mapbox.map('map', 'mlayman09.map-81g3oy1j')
-	.setView([39.67830463261529, -104.96197276865132], 15);
-		
-var markerLayer = L.mapbox.markerLayer()
-	.loadURL('https://github.com/DU-GIS/DU-GIS.github.io/blob/master/Restaurants.geojson')
-	.addTo(map);
-		
-	
-</script>
-</body>
-</html>
+  $(load);
+  </script>
+</body>  
+</html>  
+<pre><code>Let us know if that helps!</code>
+</pre>
