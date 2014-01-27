@@ -23,13 +23,14 @@
 var map = L.mapbox.map('map', 'examples.map-9ijuk24y')
     .setView([39.67830463261529, -104.96197276865132], 15);
 
-// As with any other AJAX request, this technique is subject to the Same Origin Policy:
-// http://en.wikipedia.org/wiki/Same_origin_policy
-// So the CSV file must be on the same domain as the Javascript, or the server
-// delivering it should support CORS.
-var markerLayer = L.mapbox.markerLayer()
-    .loadURL('/mapbox.js/assets/example-single.geojson')
-    .addTo(map);
+$.getJSON($('link[rel="points"]').attr("href"), function(data) {
+		var geojson = L.geoJson(data, {
+			onEachFeature: function (feature, layer) {
+				layer.bindPopup(feature.properties.name);
+			}
+		});
+		geojson.addTo(map);
+	});
 
 	
 	</script>
