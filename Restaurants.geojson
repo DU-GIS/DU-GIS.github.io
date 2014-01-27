@@ -45,6 +45,21 @@
           39.67830020960751
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Noodles & Company",
+        "Address": "1737 E Evans Ave, Denver, CO ",
+        "Website": "http://www.noodles.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.96663510799408,
+          39.67860573112755
+        ]
+      }
     }
   ]
 }
