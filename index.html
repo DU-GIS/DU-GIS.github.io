@@ -20,7 +20,6 @@
 <script>
 var map = L.mapbox.map('map', 'examples.map-9ijuk24y')
     .setView([39.67774313011706, -104.96188693796284], 15);
-	.addTo(
 $.getJSON($('link[rel="points"]').attr("href"), function(data) {
     var geojson = L.geoJson(data, {
       onEachFeature: function (feature, layer) {
