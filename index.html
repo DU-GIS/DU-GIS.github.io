@@ -26,7 +26,6 @@ $.getJSON($('link[rel="points"]').attr("href"), function(data) {
         layer.bindPopup(feature.properties.name);
       }
     });
-    var map = L.map('restaurant-map').fitBounds(geojson.getBounds());
     geojson.addTo(map);
   });
 </script>
