@@ -60,6 +60,21 @@
           39.67860573112755
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Testing",
+        "Address": "test address",
+        "Website": "www.yep.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.96260643005371,
+          39.67660743075167
+        ]
+      }
     }
   ]
 }
