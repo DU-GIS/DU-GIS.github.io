@@ -60,21 +60,6 @@
           39.67860573112755
         ]
       }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "Name": "test",
-        "Address": "test",
-        "Website": "test"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -104.96371150016785,
-          39.67775522191888
-        ]
-      }
     }
   ]
 }
