@@ -32,13 +32,23 @@
     }
   $(load);
   
-  var myStyle = {
-	"color": "#ff0000",
-	};
-  
-  L.geoJson(geojson, {
-	style: myStyle
-	}).addTo(map);
+	var urlx = 'https://api.github.com/repos/du-gis/du-gis.github.io/contents/Commutes.geojson';
+    function load() {
+      $.ajax({
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/vnd.github.v3.raw'
+        },
+        dataType: 'json',
+        url: urlx,
+        success: function(geojson) {
+          var map = L.mapbox.map('map', 'mlayman09.map-81g3oy1j')
+            .setView([39.67830463261529, -104.96197276865132], 15)
+            .markerLayer.setGeoJSON(geojson);			
+        }
+      });
+    }
+  $(load);
   
   </script>
 </body>
