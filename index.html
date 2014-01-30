@@ -1,56 +1,42 @@
-<!DOCTYPE html>
+
+<!doctype html>
 <html>
 <head>
-<meta charset=utf-8 />
-<link href='//api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />
-<script src='//api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js'></script>
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<title></title>
-<style>
-  body { margin:0; padding:0; }
-  #map { position:absolute; top:0; bottom:0; width:100%; }
-</style>
-</head>
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+	<!--[if lte IE 8]>
+     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.ie.css" />
+ 	<![endif]-->
+ 	<style type="text/css">
+		body {
+			padding: 0;
+			margin: 0;
+		}
+
+		html, body, #cupcake-map {
+			height: 100%;
+		}
+
+ 	</style>
+	<script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<link rel="points" type="application/json" href="https://github.com/DU-GIS/DU-GIS.github.io/blob/master/Restaurants.geojson">
 <body>
-  <div id='map'></div>
-  <script>
-    var url = 'https://api.github.com/repos/du-gis/du-gis.github.io/contents/Restaurants.geojson';
-    function load() {
-      $.ajax({
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/vnd.github.v3.raw'
-        },
-        dataType: 'json',
-        url: url,
-        success: function(geojson) {
-          var map = L.mapbox.map('map', 'mlayman09.map-81g3oy1j')
-            .setView([39.67830463261529, -104.96197276865132], 15)
-            .markerLayer.setGeoJSON(geojson);			
-        }
-      });
-    }
-  $(load);
-  
-	var urlx = 'https://api.github.com/repos/du-gis/du-gis.github.io/contents/Commutes.geojson';
-    function load() {
-      $.ajax({
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/vnd.github.v3.raw'
-        },
-        dataType: 'json',
-        url: urlx,
-        success: function(geojson) {
-          var map = L.mapbox.map('map', 'mlayman09.map-81g3oy1j')
-            .setView([39.67830463261529, -104.96197276865132], 15)
-            .markerLayer.setGeoJSON(geojson);
-			.bindPopup(feature.properties.popupContent);			
-        }
-      });
-    }
-  $(load);
-  
-  </script>
+	<div id="cupcake-map"></div>
+	<script>
+	var cupcakeTiles = L.tileLayer('https://a.tiles.mapbox.com/v3/mlayman09.map-81g3oy1j/{z}/{x}/{y}.png', {
+		maxZoom: 18
+	});
+
+	$.getJSON($('link[rel="points"]').attr("href"), function(data) {
+		var geojson = L.geoJson(data, {
+			onEachFeature: function (feature, layer) {
+				layer.bindPopup(feature.properties.name);
+			}
+		});
+		var map = L.map('cupcake-map').fitBounds(geojson.getBounds());
+		cupcakeTiles.addTo(map);
+		geojson.addTo(map);
+	});
+	</script>
 </body>
 </html>
